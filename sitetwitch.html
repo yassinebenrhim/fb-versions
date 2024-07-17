@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitch Clone</title>
+  <link rel="stylesheet" href="./sitetwitch.JS">
+ <link rel="stylesheet" href="sitetwitch.css">
+</head>
+<body>
+  <header>
+    <h1>Twitch Clone</h1>
+  </header>
+  <main>
+    <section id="main-content">
+      <div id="video-container">
+        <video id="video-player" controls>
+          <source src="your-video-source.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div id="chat-container">
+        <div id="chat-box">
+          <!-- Chat messages will appear here -->
+        </div>
+        <input type="text" id="chat-input" placeholder="Type a message...">
+        <button id="send-btn">Send</button>
+      </div>
+    </section>
+    <aside>
+      <h2>Live Streams</h2>
+      <ul id="stream-list">
+        <li>Stream 1</li>
+        <li>Stream 2</li>
+        <li>Stream 3</li>
+      </ul>
+    </aside>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

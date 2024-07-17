@@ -1,0 +1,575 @@
+// lovingly coded by Danny Pule based on the excellent design at https://dribbble.com/shots/2218470-Old-master
+
+// variables
+$skinColor: #d1b17e; 
+$eyeBrows: #e0dede; 
+$eyes: #fefefe; 
+$ears: #ad7b5f; 
+$nose: #c29c60; 
+$stash: $eyeBrows; 
+$beardOuterOne: #684d3b; 
+$beardOuterTwo: #79684e; 
+$beardOuterThree: #674c3a; 
+$beardInner: #b8b2b2; 
+$mouth: #c29c60; 
+$robeDarkBlue: #151523; 
+$robeLightBlue: #272742; 
+$handsOne: $skinColor; 
+$handsTwo: #c29c60; 
+$handsThumbShadow: #684d3b; 
+$handsFingerShadow: #543b2a; 
+$legs: #634937; 
+$shadow: #7b7777; 
+
+$pixelSize: 5px;
+$addedPixels: 4px;
+$pixelSize: $pixelSize + $addedPixels;
+
+$top: 150px;
+$basePos: 130px;
+
+$dimTo: .7;
+
+@-webkit-keyframes flicker {
+  0%   { opacity: 1; }
+  50% { opacity: $dimTo; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes flicker {
+  0%   { opacity: 1; }
+  50% { opacity: $dimTo; }
+  100% { opacity: 1; }
+}
+@-o-keyframes flicker {
+  0%   { opacity: 1; }
+  50% { opacity: $dimTo; }
+  100% { opacity: 1; }
+}
+@keyframes flicker {
+  0%   { opacity: 1; }
+  50% { opacity: $dimTo; }
+  100% { opacity: 1 }
+}
+
+body {
+  background: #BDBDBD;
+  background: linear-gradient(90deg, #262626 50%, #262626 50%);
+}
+
+.O_o {
+  top: calc(50% - 250px);
+  left: calc(50% - 153px);
+  position: absolute;
+  font-size: 0px;
+  /* border: 1px solid tomato; */
+  height: 500px;
+  width: 306px;
+  border-radius: 100%;
+  background: #8e8e8e;
+  background: linear-gradient(180deg, #262626 50%, #262626 50%);
+    -webkit-animation: flicker 4s infinite; /* Safari 4+ */
+  -moz-animation:    flicker 4s infinite; /* Fx 5+ */
+  -o-animation:      flicker 4s infinite; /* Opera 12+ */
+  animation:         flicker 4s infinite; /* IE 10+, Fx 29+ */
+}
+.base-pixel {
+  height: $pixelSize;
+  width: $pixelSize;
+  background: tomato;
+  display: inline-block;
+  position: absolute;
+}
+
+//
+// line 1
+//
+$top: $top;
+$pos: $basePos;
+$num: 0;
+$colors: ($skinColor, $skinColor, $skinColor, $skinColor, $skinColor);
+//
+
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 2
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 1 * $pixelSize; 
+$pos: $basePos - $spacesToTheLeft;
+$colors: ($skinColor, $skinColor, $skinColor, $skinColor, $skinColor, $skinColor, $skinColor);
+//
+
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 3
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 1 * $pixelSize; 
+$pos: $basePos - $spacesToTheLeft;
+$colors: ($eyeBrows, $eyeBrows, $eyeBrows, $skinColor, $eyeBrows, $eyeBrows, $eyeBrows);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 4
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 1 * $pixelSize; 
+$pos: $basePos - $spacesToTheLeft;
+$colors: ($skinColor, $eyes, $skinColor, $skinColor, $skinColor, $eyes, $skinColor);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 5
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 2 * $pixelSize; 
+$pos: $basePos - $spacesToTheLeft;
+$colors: ($ears, $skinColor, $skinColor, $skinColor, $nose, $skinColor, $skinColor, $skinColor, $ears);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 6
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 1 * $pixelSize; 
+$pos: $basePos - $spacesToTheLeft;
+$colors: ($skinColor, $skinColor, $stash, $stash, $stash, $skinColor, $skinColor);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 7
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 2 * $pixelSize; 
+$pos: $basePos - $spacesToTheLeft;
+$colors: ($robeDarkBlue, $beardOuterOne, $stash, $mouth, $mouth, $mouth, $stash, $beardOuterOne, $robeDarkBlue);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+//
+// line 8
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 3 * $pixelSize; 
+$pos: $basePos - $spacesToTheLeft;
+$colors: ($robeLightBlue, $robeDarkBlue, $beardOuterOne, $stash, $skinColor, $beardInner, $skinColor, $stash, $beardOuterOne, $robeDarkBlue, $robeLightBlue);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 9
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 4 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+$colors: ($robeLightBlue, $robeLightBlue, $robeDarkBlue, $beardOuterOne, $stash, $beardInner, $beardInner, $beardInner, $stash, $beardOuterOne, $robeDarkBlue, $robeLightBlue, $robeLightBlue);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 10
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 4 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+$colors: ($robeLightBlue, $robeLightBlue, $robeDarkBlue, $beardOuterOne, $stash, $beardInner, $beardInner, $beardInner, $stash, $beardOuterOne, $robeDarkBlue, $robeLightBlue, $robeLightBlue);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 11
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 5 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+$colors: ($robeLightBlue, $robeLightBlue, $robeDarkBlue, $robeDarkBlue, $beardOuterOne, $beardOuterOne, $beardInner, $beardInner, $beardInner, $beardOuterOne, $beardOuterOne, $robeDarkBlue, $robeDarkBlue, $robeLightBlue, $robeLightBlue);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 12
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 5 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+$colors: ($robeLightBlue, $robeLightBlue, $robeDarkBlue, $robeDarkBlue, $beardOuterOne, $beardOuterOne, $beardInner, $beardInner, $beardInner, $beardOuterOne, $beardOuterOne, $robeDarkBlue, $robeDarkBlue, $robeLightBlue, $robeLightBlue);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 13
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 6 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+$colorsLeft: ($robeDarkBlue, $robeLightBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $beardOuterTwo, $beardOuterOne, $beardOuterOne, $beardInner);
+$colorsRight: ($beardOuterOne, $beardOuterOne, $beardOuterTwo, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeLightBlue, $robeDarkBlue);
+$colors: join($colorsLeft, $colorsRight, comma);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 14
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 6 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+$colorsLeft: ($robeDarkBlue, $robeLightBlue, $robeLightBlue, $robeDarkBlue, $robeDarkBlue, $beardOuterTwo, $beardOuterOne, $beardOuterOne, $beardInner);
+$colorsRight: ($beardOuterOne, $beardOuterOne, $beardOuterTwo, $robeDarkBlue, $robeDarkBlue, $robeLightBlue, $robeLightBlue, $robeDarkBlue);
+$colors: join($colorsLeft, $colorsRight, comma);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 15
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 7 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+$colorsLeft: ($robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeLightBlue, $robeDarkBlue, $beardOuterThree, $beardOuterTwo, $beardOuterOne, $beardOuterOne);
+$colorsRight: ($beardOuterOne, $beardOuterTwo, $beardOuterThree, $robeDarkBlue, $robeLightBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue);
+$colors: join($colorsLeft, $colorsRight, comma);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 16
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 7 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+$colorsLeft: ($robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $beardOuterThree, $beardOuterThree, $beardOuterTwo, $beardOuterThree);
+$colorsRight: ($beardOuterTwo, $beardOuterThree, $beardOuterThree, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue);
+$colors: join($colorsLeft, $colorsRight, comma);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 17
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 8 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+
+$colorsLeft: ($robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $skinColor, $skinColor, $robeDarkBlue, $robeDarkBlue, $handsFingerShadow, $beardOuterThree, $beardOuterTwo);
+$colorsRight: ($beardOuterThree, $handsFingerShadow, $robeDarkBlue, $robeDarkBlue, $skinColor, $skinColor, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue);
+
+$colors: join($colorsLeft, $colorsRight, comma);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 18
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 8 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+
+$colorsLeft: ($robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $skinColor, $skinColor, $handsThumbShadow, $skinColor, $robeDarkBlue, $beardOuterThree, $beardOuterThree, $beardOuterThree);
+$colorsRight: ($beardOuterThree, $beardOuterThree, $robeDarkBlue, $skinColor, $handsThumbShadow, $skinColor, $skinColor, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue);
+
+$colors: join($colorsLeft, $colorsRight, comma);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 19
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 8 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+
+$colorsLeft: ($robeDarkBlue, $robeDarkBlue, $handsFingerShadow, $handsTwo, $handsTwo, $handsFingerShadow, $handsFingerShadow, $legs, $legs, $handsFingerShadow, $handsFingerShadow);
+$colorsRight: ($handsFingerShadow, $legs, $legs, $handsFingerShadow, $handsFingerShadow, $handsTwo, $handsTwo, $handsFingerShadow, $robeDarkBlue, $robeDarkBlue);
+
+$colors: join($colorsLeft, $colorsRight, comma);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 20
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 8 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+
+$colorsLeft: ($robeDarkBlue, $legs, $legs, $handsFingerShadow, $handsFingerShadow, $handsFingerShadow, $legs, $legs, $legs, $legs, $legs);
+$colorsRight: ($legs, $legs, $legs, $legs, $handsFingerShadow, $handsFingerShadow, $handsFingerShadow, $legs, $legs, $robeDarkBlue);
+
+$colors: join($colorsLeft, $colorsRight, comma);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 21
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 9 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+
+$colorsLeft: ($robeDarkBlue, $robeDarkBlue, $legs, $legs, $legs, $legs, $legs, $legs, $legs, $legs, $legs, $legs);
+$colorsRight: ($legs, $legs, $legs, $legs, $handsFingerShadow, $handsFingerShadow, $legs, $legs, $legs, $robeDarkBlue, $robeDarkBlue);
+
+$colors: join($colorsLeft, $colorsRight, comma);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 22
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 13 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+
+$colorsLeft: ($shadow, $shadow, $shadow, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $legs, $legs, $legs, $legs, $legs, $legs, $legs, $legs, $legs, $handsFingerShadow);
+$colorsRight: ($handsFingerShadow, $handsFingerShadow, $handsFingerShadow, $handsFingerShadow, $legs, $legs, $legs, $legs, $legs, $legs, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $shadow, $shadow);
+
+$colors: join($colorsLeft, $colorsRight, comma);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 23
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 14 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+
+$colorsLeft: ($shadow, $shadow, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $handsFingerShadow, $handsFingerShadow, $handsFingerShadow, $handsFingerShadow, $handsFingerShadow, $handsFingerShadow, $handsFingerShadow, $handsFingerShadow, $handsFingerShadow, $handsFingerShadow);
+$colorsRight: ($handsFingerShadow, $handsFingerShadow, $handsFingerShadow, $legs, $legs, $legs, $legs, $legs, $legs, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $robeDarkBlue, $shadow, $shadow);
+
+$colors: join($colorsLeft, $colorsRight, comma);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}
+
+//
+// line 24
+//
+$top: $top + $pixelSize;
+$spacesToTheLeft: 13 * $pixelSize;
+$pos: $basePos - $spacesToTheLeft;
+
+$colors: ($shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow, $shadow);
+//
+@each $color in $colors {
+  $num: $num + 1;
+  .pixel-#{$num} {
+    @extend .base-pixel;
+    top: $top;
+    left: $pos;
+    background: $color;
+  }
+  $pos: $pos + $pixelSize;
+}

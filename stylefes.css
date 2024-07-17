@@ -1,0 +1,32 @@
+.blue {
+    color: blue;
+}
+
+h1 {
+    text-align: center;
+    h2 {
+        text-align: left;
+      }
+      h3 {
+        text-align: right;
+      }    
+
+    }    
+    p.a {
+        text-align-last: right;
+      }
+      
+      p.b {
+        text-align-last: center;
+      }
+      
+      p.c {
+        text-align-last: justify;
+      }
+
+
+
+
+
+
+
